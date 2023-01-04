@@ -35,7 +35,7 @@ jobs:
       - name: commit & push
         uses: actions-go/push@master
         with:
-          author-email: '1169732264@qq.com'
+          author-email: '2765443989@qq.com'
           author-name: 'lx'
           commit-message: 'update downloaded comics'
           remote: origin
