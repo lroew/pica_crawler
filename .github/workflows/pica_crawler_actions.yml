@@ -32,7 +32,7 @@ jobs:
           # 哔咔的分区
           CATEGORIES: 性轉換,耽美花園,偽娘哲學,扶他樂園,SAO 刀劍神域,Cosplay
           # CATEGORIES_RULE 过滤规则    INCLUDE: 包含任意一个分区就下载  EXCLUDE: 包含任意一个分区就不下载
-          CATEGORIES_RULE: INCLUDE
+          CATEGORIES_RULE: EXCLUDE
           # 每次运行后都会在downloaded.txt里追加本次下载过的漫画
         run: |
           python main.py
