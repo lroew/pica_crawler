@@ -42,9 +42,9 @@ jobs:
         uses: actions-go/push@master
         with:
           # 提交代码时配置的git邮箱
-          author-email: '1169732264@qq.com'
+          author-email: 'actions@github.com'
           # 提交代码时配置的提交人姓名
-          author-name: 'lx'
+          author-name: 'GitHub Actions'
           commit-message: 'update downloaded comics'
           remote: origin
           token: ${{ secrets.GIT_TOKEN }}
