@@ -21,7 +21,7 @@ def get_cfg(section: str, key: str):
 
 def filter_comics(comics) -> list:
     # 过滤掉已下载的本子
-    ids = open('./downloaded.txt', 'r').read().split('\n')
+    ids = open('./downl.txt', 'r').read().split('\n')
     comics = [i for i in comics if i['_id'] not in ids]
 
     # 过滤掉指定分区的本子
