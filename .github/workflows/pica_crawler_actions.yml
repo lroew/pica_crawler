@@ -36,7 +36,7 @@ jobs:
           # 每次运行后都会在downloaded.txt里追加本次下载过的漫画
         run: |
           python main.py
-          git add downloaded.txt
+          git add downl.txt
         # push代码保留本次的下载结果
       - name: commit & push
         uses: actions-go/push@master
@@ -45,6 +45,6 @@ jobs:
           author-email: 'actions@github.com'
           # 提交代码时配置的提交人姓名
           author-name: 'GitHub Actions'
-          commit-message: 'update downloaded comics'
+          commit-message: '更新下载的漫画'
           remote: origin
           token: ${{ secrets.GIT_TOKEN }}
