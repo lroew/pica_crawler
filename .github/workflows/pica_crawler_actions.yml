@@ -42,7 +42,7 @@ jobs:
         # 每次运行后都会在downloaded.txt里追加本次下载过的漫画
         run: |
           python main.py
-          git add downloaded.txt
+          git add downl.txt
       # push代码保留本次的下载结果
       - name: commit & push
         uses: actions-go/push@master
