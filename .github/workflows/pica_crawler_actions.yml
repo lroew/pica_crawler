@@ -34,7 +34,7 @@ jobs:
           # 收信邮箱服务器的端口
           EMAIL_SERVER_PORT: 587
           # 过滤分区 用,分隔
-          CATEGORIES: 耽美花園,偽娘哲學,扶他樂園,性轉換,SAO 刀劍神域,WEBTOON,Cosplay
+          CATEGORIES: 耽美花園,扶他樂園,性轉換
           # CATEGORIES_RULE 过滤规则    INCLUDE: 包含任意一个分区就下载  EXCLUDE: 包含任意一个分区就不下载
           CATEGORIES_RULE: INCLUDE
           # 订阅的关键词,下载根据关键词搜索到的所有本子.为空则关闭关键词订阅   建议填画师名字,填模糊的本子标题会导致搜索结果过多,推送不了
