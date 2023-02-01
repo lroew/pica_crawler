@@ -27,8 +27,8 @@ jobs:
           PICA_PASSWORD: ${{secrets.PICA_PASSWORD}}
           EMAIL_ACCOUNT: ${{secrets.EMAIL_ACCOUNT}}
           EMAIL_AUTH_CODE: ${{secrets.EMAIL_AUTH_CODE}}
-          # 收信邮箱的smtp服务器地址
-          EMAIL_SERVER_HOST: smtp.qq.com
+          # 收信邮箱的smtp服务器地址 outlook:smtp.office365.com qq:smtp.qq.com
+          EMAIL_SERVER_HOST: smtp.office365.com
           # 收信邮箱服务器的加密方式 true:STARTTLS false:TLS    outlook邮箱只能为true,qq邮箱true和false都可以
           EMAIL_STARTTLS: true
           # 收信邮箱服务器的端口
