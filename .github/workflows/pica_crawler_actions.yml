@@ -49,15 +49,26 @@ jobs:
       #     path: comics/
       #     retention-days: 2
 
-      - name: 自动释放
-        uses: marvinpinto/action-automatic-releases@v1.2.1
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "Auto-${{ steps.create_timestamp.outputs.timestamp }}"
+          tag_name: Auto-${{ steps.create_timestamp.outputs.timestamp }}
+          release_name: Release1-${{ steps.create_timestamp.outputs.timestamp }}
+          files: comics/finder-result.zip
+          draft: false
           prerelease: true
-          title: "finder-result ${{ steps.create_timestamp.outputs.timestamp }}"
-          files: |
-           comics/finder-result.zip
+
+      # - name: 自动释放
+      #   uses: marvinpinto/action-automatic-releases@v1.2.1
+      #   with:
+      #     repo_token: "${{ secrets.GITHUB_TOKEN }}"
+      #     automatic_release_tag: "Auto-${{ steps.create_timestamp.outputs.timestamp }}"
+      #     prerelease: true
+      #     title: "finder-result ${{ steps.create_timestamp.outputs.timestamp }}"
+      #     files: |
+      #      comics/finder-result.zip
 
       - name: commit & push
         uses: actions-go/push@master
