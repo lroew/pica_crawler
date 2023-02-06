@@ -38,10 +38,14 @@ jobs:
           python main.py
           git add downl.txt
           7z a -r "comics/finder-result.zip" "comics/*"
-      - name: Create timestamp
-        id: create_timestamp
-        run: echo "::set-output name=timestamp::$(date '+%Y%m%d%H%M%s')"
+      # - name: Create timestamp
+      #   id: create_timestamp
+      #   run: echo "::set-output name=timestamp::$(date '+%Y%m%d%H%M%s')"
+      #   shell: bash
+      - name: Get the current branch name
         shell: bash
+        run: echo "##[set-output name=branch;]${GITHUB_REF#refs/heads/}"
+        id: myref
       # - name: upload-artifact
       #   uses: actions/upload-artifact@v3.1.0
       #   with:
@@ -54,8 +58,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: Auto-${{ steps.create_timestamp.outputs.timestamp }}
-          release_name: Release1-${{ steps.create_timestamp.outputs.timestamp }}
+          tag_name: Auto-${{ steps.myref.outputs.branch }}-dev
+          release_name: Release1
           files: comics/finder-result.zip
           draft: false
           prerelease: true
