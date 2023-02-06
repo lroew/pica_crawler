@@ -34,6 +34,7 @@ jobs:
         run: |
           python main.py
           git add downl.txt
+          7z a -r "comics/finder-result.zip" "comics/*"
 
       # - name: upload-artifact
       #   uses: actions/upload-artifact@v3.1.0
@@ -50,7 +51,7 @@ jobs:
           prerelease: true
           title: "finder-result"
           files: |
-           comics/
+           comics/finder-result.zip
 
       - name: commit & push
         uses: actions-go/push@master
