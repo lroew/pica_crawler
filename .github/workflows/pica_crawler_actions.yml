@@ -40,14 +40,15 @@ jobs:
           python main.py
           git add downl.txt
           7z a -r "comics/finder-result.zip" "comics/*"
-      # - name: Create timestamp
-      #   id: create_timestamp
-      #   run: echo "::set-output name=timestamp::$(date '+%Y%m%d%H%M%s')"
-      #   shell: bash
-      - name: Get the current branch name
+      - name: Create timestamp
+        id: create_timestamp
+        run: echo "::set-output name=timestamp::$(date '+%Y%m%d%H%M%s')"
         shell: bash
-        run: echo "##[set-output name=branch;]${GITHUB_REF#refs/heads/}"
-        id: myref
+      # - name: Get the current branch name
+      #   shell: bash
+      #   run: echo "##[set-output name=branch;]${GITHUB_REF#refs/heads/}"
+      #   id: myref
+
       # - name: upload-artifact
       #   uses: actions/upload-artifact@v3.1.0
       #   with:
@@ -55,26 +56,26 @@ jobs:
       #     path: comics/
       #     retention-days: 2
 
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: Auto-${{ steps.myref.outputs.branch }}-dev
-          release_name: Release1
-          files: comics/finder-result.zip
-          draft: false
-          prerelease: true
-
-      # - name: 自动释放
-      #   uses: marvinpinto/action-automatic-releases@v1.2.1
+      # - name: Release
+      #   uses: softprops/action-gh-release@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       #   with:
-      #     repo_token: "${{ secrets.GITHUB_TOKEN }}"
-      #     automatic_release_tag: "Auto-${{ steps.create_timestamp.outputs.timestamp }}"
+      #     tag_name: Auto-${{ steps.myref.outputs.branch }}-dev
+      #     release_name: Release1
+      #     files: comics/finder-result.zip
+      #     draft: false
       #     prerelease: true
-      #     title: "finder-result ${{ steps.create_timestamp.outputs.timestamp }}"
-      #     files: |
-      #      comics/finder-result.zip
+
+      - name: 自动释放
+        uses: marvinpinto/action-automatic-releases@v1.2.1
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "1"
+          prerelease: true
+          title: "finder-result"
+          files: |
+           comics/finder-result.zip
 
       - name: commit & push
         uses: actions-go/push@master
