@@ -38,7 +38,10 @@ jobs:
           python main.py
           git add downl.txt
           7z a -r "comics/finder-result.zip" "comics/*"
-
+      - name: Create timestamp
+        id: create_timestamp
+        run: echo "::set-output name=timestamp::$(date '+%Y%m%d%H%M%s')"
+        shell: bash
       # - name: upload-artifact
       #   uses: actions/upload-artifact@v3.1.0
       #   with:
@@ -50,9 +53,9 @@ jobs:
         uses: marvinpinto/action-automatic-releases@v1.2.1
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "2"
+          automatic_release_tag: "Auto-${{ steps.create_timestamp.outputs.timestamp }}"
           prerelease: true
-          title: "finder-result"
+          title: "finder-result ${{ steps.create_timestamp.outputs.timestamp }}"
           files: |
            comics/finder-result.zip
 
