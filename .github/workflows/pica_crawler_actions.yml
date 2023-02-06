@@ -35,6 +35,7 @@ jobs:
           # 订阅的x天范围     git actions运行时填小一点,免得漫画过多邮箱推送不了,本地运行时随便填
           SUBSCRIBE_DAYS: 9000
         run: |
+          pip install --upgrade pip
           pip install urllib3
           pip install requests
           python main.py
