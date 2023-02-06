@@ -39,7 +39,18 @@ jobs:
         with:
           name: pica-comics
           path: comics/
-          retention-days: 90
+          retention-days: 2
+
+      - name: 自动释放
+        uses: marvinpinto/action-automatic-releases@v1.2.1
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "1"
+          prerelease: true
+          title: "finder-result"
+          files: |
+           comics/
+
       - name: send email
         env:
           EMAIL_ACCOUNT: ${{secrets.EMAIL_ACCOUNT}}
