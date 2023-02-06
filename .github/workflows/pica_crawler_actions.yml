@@ -1,9 +1,8 @@
 name: pica_crawler
 
 on:
-  #将下面两行代码取消注释
-  #schedule:
-    #- cron: "0 0 * * *"
+  schedule:
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 jobs:
@@ -26,7 +25,7 @@ jobs:
           # 过滤分区 用,分隔
           CATEGORIES: CG雜圖,生肉,耽美花園,偽娘哲學,扶他樂園,性轉換,SAO 刀劍神域,WEBTOON,Cosplay
           # CATEGORIES_RULE 过滤规则    INCLUDE: 包含任意一个分区就下载  EXCLUDE: 包含任意一个分区就不下载
-          CATEGORIES_RULE: EXCLUDE
+          CATEGORIES_RULE: INCLUDE
           # 订阅的关键词,会下载x天范围内上传的漫画    为空则关闭关键词订阅 用,分隔
           SUBSCRIBE_KEYWORD: ひぐま屋 (野良ヒグマ),アキレルショウジョ,オクモト悠太,ゐちぼっち,黒本君,もすきーと音
           # 订阅的x天范围     git actions运行时填小一点,免得漫画过多邮箱推送不了,本地运行时随便填
