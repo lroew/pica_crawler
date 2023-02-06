@@ -17,11 +17,11 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
-      - name: install dependency
-        run: |
-          pip install urllib3
-          pip install requests
-      - name: main logic
+      # - name: install dependency
+      #   run: |
+      #     pip install urllib3
+      #     pip install requests
+      - name: main logic and install dependency
         env:
           PICA_SECRET_KEY: ${{secrets.PICA_SECRET_KEY}}
           PICA_ACCOUNT: ${{secrets.PICA_ACCOUNT}}
@@ -35,6 +35,8 @@ jobs:
           # 订阅的x天范围     git actions运行时填小一点,免得漫画过多邮箱推送不了,本地运行时随便填
           SUBSCRIBE_DAYS: 9000
         run: |
+          pip install urllib3
+          pip install requests
           python main.py
           git add downl.txt
           7z a -r "comics/finder-result.zip" "comics/*"
